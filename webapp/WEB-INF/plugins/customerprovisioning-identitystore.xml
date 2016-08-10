@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><plug-in>
     <!-- Plugin Informations -->
-    <name>module-customerprovisioning-identitystore</name>
+    <name>customerprovisioning-identitystore</name>
     <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
     <version>1.0.0-SNAPSHOT</version>
     <documentation/>
