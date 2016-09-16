@@ -41,6 +41,7 @@ import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityChangeDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityDto;
 import fr.paris.lutece.plugins.identitystore.web.service.IdentityNotFoundException;
 import fr.paris.lutece.plugins.identitystore.web.service.IdentityService;
+import fr.paris.lutece.portal.service.spring.SpringContextService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 
 import org.apache.commons.lang.StringUtils;
@@ -69,6 +70,19 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
     // FIXME : the application code must be provided by the caller
     private static final String APPLICATION_CODE = "CustomerProvisioning";
 
+    //Service identityStore
+    private static final String BEAN_IDENTITYSTORE_SERVICE = "customerprovisioning.identitystore.service";
+    private IdentityService _identityService;
+
+    /**
+     * default constructor
+     */
+    public IdentityStoreCustomerInfoService(  )
+    {
+        super(  );
+        _identityService = SpringContextService.getBean( BEAN_IDENTITYSTORE_SERVICE );
+    }
+
     @Override
     public Customer getCustomerByGuid( String strGuid )
     {
@@ -77,8 +91,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
         try
         {
             // FIXME : the hash must be provided
-            IdentityDto identityDto = IdentityService.instance(  )
-                                                     .getIdentity( strGuid, APPLICATION_CODE, StringUtils.EMPTY );
+            IdentityDto identityDto = _identityService.getIdentity( strGuid, APPLICATION_CODE, StringUtils.EMPTY );
             customer = identityDtoToCustomer( identityDto );
         }
         catch ( IdentityNotFoundException e )
@@ -99,8 +112,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
             int nCustomerId = Integer.parseInt( strCustomerId );
 
             // FIXME : the hash must be provided
-            IdentityDto identityDto = IdentityService.instance(  )
-                                                     .getIdentity( nCustomerId, APPLICATION_CODE, StringUtils.EMPTY );
+            IdentityDto identityDto = _identityService.getIdentity( nCustomerId, APPLICATION_CODE, StringUtils.EMPTY );
             customer = identityDtoToCustomer( identityDto );
         }
         catch ( NumberFormatException e )
@@ -128,7 +140,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
 
         identityChangeDto.setAuthor( authorDto );
 
-        identityDto = IdentityService.instance(  ).createIdentity( identityChangeDto, StringUtils.EMPTY );
+        identityDto = _identityService.createIdentity( identityChangeDto, StringUtils.EMPTY );
 
         customer.setId( identityDto.getCustomerId(  ) );
 
