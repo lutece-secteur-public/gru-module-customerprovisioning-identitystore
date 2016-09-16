@@ -69,18 +69,18 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
 
     // FIXME : the application code must be provided by the caller
     private static final String APPLICATION_CODE = "CustomerProvisioning";
-    
+
     //Service identityStore
-    private static final String BEAN_IDENTITYSTORE_SERVICE="customerprovisioning.identitystore.service";
+    private static final String BEAN_IDENTITYSTORE_SERVICE = "customerprovisioning.identitystore.service";
     private IdentityService _identityService;
-    
+
     /**
      * default constructor
      */
     public IdentityStoreCustomerInfoService(  )
     {
-	    super(  );
-	    _identityService = SpringContextService.getBean( BEAN_IDENTITYSTORE_SERVICE );
+        super(  );
+        _identityService = SpringContextService.getBean( BEAN_IDENTITYSTORE_SERVICE );
     }
 
     @Override
