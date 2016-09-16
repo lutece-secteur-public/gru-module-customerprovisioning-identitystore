@@ -34,7 +34,7 @@
 package fr.paris.lutece.plugins.customerprovisioning.modules.identitystore.services;
 
 import fr.paris.lutece.plugins.customerprovisioning.services.ICustomerInfoService;
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.AttributeDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.AuthorDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityChangeDto;
