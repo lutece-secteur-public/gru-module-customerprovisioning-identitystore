@@ -9,9 +9,20 @@
        http://www.springframework.org/schema/context/spring-context-3.0.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-
-
-   	<!-- Service -->
+   
+   <!-- IDENTITYSTORE BEAN -->
+    <bean id="customerprovisioning.identitystore.simpleRestTransport" class="fr.paris.lutece.plugins.identitystore.web.service.SimpleRestTransport" />
+    <bean id="customerprovisioning.identitystore.httpTransport" class="fr.paris.lutece.plugins.identitystore.web.rs.service.IdentityTransportRest">
+        <property name="IdentityStoreEndPoint">
+            <value>http://127.0.0.1:9092/lutece/rest/identitystore/</value>
+        </property>
+        <property name="httpTransport">
+            <ref bean="customerprovisioning.identitystore.simpleRestTransport"/>
+        </property>
+    </bean>       
+    <bean id="customerprovisioning.identitystore.service" class="fr.paris.lutece.plugins.identitystore.web.service.IdentityService">
+        <constructor-arg ref="customerprovisioning.identitystore.httpTransport"/>
+    </bean>
 
 </beans>
  	
