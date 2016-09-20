@@ -41,13 +41,15 @@ import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityChangeDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityDto;
 import fr.paris.lutece.plugins.identitystore.web.service.IdentityNotFoundException;
 import fr.paris.lutece.plugins.identitystore.web.service.IdentityService;
-import fr.paris.lutece.portal.service.spring.SpringContextService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 
 /**
@@ -72,6 +74,8 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
 
     //Service identityStore
     private static final String BEAN_IDENTITYSTORE_SERVICE = "customerprovisioning.identitystore.service";
+    @Inject
+    @Named( BEAN_IDENTITYSTORE_SERVICE )
     private IdentityService _identityService;
 
     /**
@@ -80,7 +84,6 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
     public IdentityStoreCustomerInfoService(  )
     {
         super(  );
-        _identityService = SpringContextService.getBean( BEAN_IDENTITYSTORE_SERVICE );
     }
 
     @Override
