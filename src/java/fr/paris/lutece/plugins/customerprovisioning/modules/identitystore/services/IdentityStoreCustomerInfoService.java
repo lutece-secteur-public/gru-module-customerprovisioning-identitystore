@@ -35,11 +35,11 @@ package fr.paris.lutece.plugins.customerprovisioning.modules.identitystore.servi
 
 import fr.paris.lutece.plugins.customerprovisioning.services.ICustomerInfoService;
 import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
+import fr.paris.lutece.plugins.identitystore.web.exception.IdentityNotFoundException;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.AttributeDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.AuthorDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityChangeDto;
 import fr.paris.lutece.plugins.identitystore.web.rs.dto.IdentityDto;
-import fr.paris.lutece.plugins.identitystore.web.service.IdentityNotFoundException;
 import fr.paris.lutece.plugins.identitystore.web.service.IdentityService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 
