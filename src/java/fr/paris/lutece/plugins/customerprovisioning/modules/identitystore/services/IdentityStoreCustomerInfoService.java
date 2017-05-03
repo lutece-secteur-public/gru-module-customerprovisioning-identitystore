@@ -93,8 +93,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
 
         try
         {
-            // FIXME : the hash must be provided
-            IdentityDto identityDto = _identityService.getIdentity( strGuid, APPLICATION_CODE, StringUtils.EMPTY );
+            IdentityDto identityDto = _identityService.getIdentityByConnectionId( strGuid, APPLICATION_CODE );
             customer = identityDtoToCustomer( identityDto );
         }
         catch ( IdentityNotFoundException e )
@@ -112,10 +111,8 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
 
         try
         {
-            int nCustomerId = Integer.parseInt( strCustomerId );
-
             // FIXME : the hash must be provided
-            IdentityDto identityDto = _identityService.getIdentity( nCustomerId, APPLICATION_CODE, StringUtils.EMPTY );
+            IdentityDto identityDto = _identityService.getIdentityByCustomerId( strCustomerId, APPLICATION_CODE );
             customer = identityDtoToCustomer( identityDto );
         }
         catch ( NumberFormatException e )
@@ -143,7 +140,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
 
         identityChangeDto.setAuthor( authorDto );
 
-        identityDto = _identityService.createIdentity( identityChangeDto, StringUtils.EMPTY );
+        identityDto = _identityService.createIdentity( identityChangeDto );
 
         customer.setId( identityDto.getCustomerId(  ) );
 
@@ -160,7 +157,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
         IdentityDto identityDto = new IdentityDto(  );
         Map<String, AttributeDto> mapAttributes = new HashMap<String, AttributeDto>(  );
 
-        identityDto.setConnectionId( customer.getAccountGuid(  ) );
+        identityDto.setConnectionId( customer.getConnectionId(  ) );
         identityDto.setCustomerId( customer.getId(  ) );
         identityDto.setAttributes( mapAttributes );
 
@@ -183,7 +180,7 @@ public class IdentityStoreCustomerInfoService implements ICustomerInfoService
     {
         Customer customer = new Customer(  );
 
-        customer.setAccountGuid( identityDto.getConnectionId(  ) );
+        customer.setConnectionId( identityDto.getConnectionId(  ) );
         customer.setId( identityDto.getCustomerId(  ) );
         customer.setFirstname( getAttribute( identityDto, ATTRIBUTE_IDENTITY_NAME_GIVEN ) );
         customer.setLastname( getAttribute( identityDto, ATTRIBUTE_IDENTITY_NAME_FAMILLY ) );
