@@ -32,7 +32,7 @@
 		<dependency>
 			<groupId>fr.paris.lutece</groupId>
 			<artifactId>lutece-core</artifactId>
-			<version>[5.0.0,)</version>
+			<version>[5.0.0,7.9.9)</version>
 			<type>lutece-core</type>
 		</dependency>
 
@@ -46,14 +46,14 @@
         <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>library-identitystore</artifactId>
-            <version>[1.1.1-SNAPSHOT,)</version>
+            <version>[1.1.1-SNAPSHOT,3.9.9)</version>
             <type>jar</type>
         </dependency>
 		
         <dependency>
 			<groupId>fr.paris.lutece.plugins</groupId>
 			<artifactId>library-grubusiness</artifactId>
-			<version>[1.0.3-SNAPSHOT,)</version>
+			<version>[1.0.3-SNAPSHOT,1.9.9)</version>
 			<type>jar</type>
 		</dependency>
 		
